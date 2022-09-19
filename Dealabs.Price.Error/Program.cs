@@ -53,7 +53,7 @@ using (WebResponse webRes = webReq.GetResponse())
     string decoupe = texte.Substring(0, texte.IndexOf("</strong"));
     decoupe = decoupe.Substring(texte.IndexOf("data-t-click") + "data-t-click".Length);
     string final = decoupe.Substring(1, decoupe.IndexOf(" - "));
-    Console.WriteLine(final);
+    Console.WriteLine("------------------------------------------------------------------------------------\n" + final+ "\n------------------------------------------------------------------------------------\n");
     StreamWriter sourceCode1 = new StreamWriter("dealabs.txt", false);
     sourceCode1.Write(final);
     sourceCode1.Close();
@@ -61,9 +61,9 @@ using (WebResponse webRes = webReq.GetResponse())
     readStream.Close();
 
     if (FileCompare("dealabs.txt", "dealabs1.txt") == true)
-            Console.WriteLine("Files are equal.");
+            Console.WriteLine("Pas de nouvelle.");
     else
-        Console.WriteLine("Files are not equal.");
+        Console.WriteLine("NOUVELLE ERREUR DE PRIX DETECTEE !!!!!!");
 
     System.IO.File.Delete("dealabs1.txt");
     System.IO.File.Copy("dealabs.txt", "dealabs1.txt");
